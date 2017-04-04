@@ -9,23 +9,18 @@ Feature engineering is important for malicious users/IPs/activities detection.
 We can produce feature in the format of "IP, Number (of failed login), Number (of total login), ratio --  Number (of failed login) /  Number (of overall login)"
 The results are output in `feature1.txt`
 221.182.50.78,1,1,1.0
-213.281.54.52,1,3,0.333333333333
-209.233.64.32,4,4,1.0
+
 
 # Additional feature 2
 The patterns of three failed login attempts could be a good indicator of malicious users. 
 We can produce feature in the format of "IP, Number (of three consecutive failed login), Number (of three failed login)"
 The results are output in `feature2.txt`
 209.233.64.32,1
-209.237.93.86,1
-207.140.62.73,1
 
 # Additional feature 3
 We first detect patterns of three failed login attempts from the same IP address over 20 seconds. It is also important to document the IP's other activities besides from login. For example, a malicious user may try to search for information about login online after he/she realized the previous passwords don't work. It is possible that malicious users use these new information to help them log in. Each attempt will be documented.
 The results are output in `feature3.txt`
 215.298.34.27 - - [01/Jul/1995:03:27:25 -0400] "POST /login HTTP/1.0" 401 1420
-215.298.34.27 - - [01/Jul/1995:03:27:26 -0400] "GET / HTTP/1.0" 200 7074
-215.298.34.27 - - [01/Jul/1995:03:27:27 -0400] "GET /images/launch-logo.gif HTTP/1.0" 200 1713
 
 # Additional feature 4
 After detecting patterns of three failed login, we should highlight successful login within 5 minutes, because it is possible that the malicious user somehow breached into the security system. Therefore, successful logins after three failed logins must be evaluated, and these IPs could be harmful. Each attempt will be documented.
